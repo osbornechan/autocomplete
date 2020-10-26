@@ -15,7 +15,6 @@ app.use(cors());
 //routes
 app.get('/users', apiManager.getGitHubApi);
 
-
 app.listen(port, hostname, () =>{
     console.log(`Server running at http://${hostname}:${port}/`);
 })

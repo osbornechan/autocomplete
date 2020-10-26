@@ -34,6 +34,25 @@ export default class App extends Component {
         this.setState({
             searchTerm: input
         })
+
+        const url = 'http://localhost:8000/users?q=' + input
+
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        } 
+
+        fetch(url, requestOptions)
+            .then((response) =>
+                response.json())
+            .then(data => {
+                console.log('data', data)
+                this.setState({
+                    response: data
+                })
+            }).catch((error) => {
+                console.log(error)
+            })
     }
 
     render() {

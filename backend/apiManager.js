@@ -1,23 +1,24 @@
 const fetch = require('node-fetch');
 
 const getGitHubApi = async (req, res) =>{
-
-    console.log("In Api");
-    const url= "https://api.github.com/users?per_page=100";
+    const url= "https://api.github.com/search/users?q=" + req.query.q;
 
     return new Promise((resolve, reject) =>{
         fetch(url)
-        .then(res => res.json())
-        .then(data =>{
-            resolve(res.status(200).send({data}));
-        })
-        .catch(err =>{
-            console.log(err);
-        })
+            .then(res => res.json())
+            .then(data =>{
+                console.log('data:', data)
+                resolve(res.status(200).send({data}));
+            })
+            .catch(err =>{
+                console.log(err);
+            })
         
     })
   
 }
+
+
 
 module.exports = {
     getGitHubApi

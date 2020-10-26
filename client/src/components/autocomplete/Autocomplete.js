@@ -11,6 +11,7 @@ export default class Search extends Component {
 
     changeHandler(event) {
         this.props.setSearch(event.target.value)
+
         event.target.value != '' ? this.setState({display: 'block'}) : this.setState({display: 'none'})
     }
 
